@@ -4,4 +4,5 @@ class FootballDB:
 
     @staticmethod
     def evaluate():
+        # https://github.com/openfootball/world-cup
         print "evaluating football db"
