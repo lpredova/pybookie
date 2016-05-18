@@ -1,11 +1,14 @@
 # coding=utf-8
 # !/usr/bin/env python
+import json
+import sys
 
 import spade
-import sys
 from spade.ACLMessage import ACLMessage
 from spade.Agent import Agent
 from spade.Behaviour import ACLTemplate, Behaviour
+
+from bookie import Bookie
 
 
 class MasterBettingAgent(Agent):
@@ -16,6 +19,17 @@ class MasterBettingAgent(Agent):
             print "Master betting agent up and running"
 
             self.msg = self._receive(True)
+
+            if self.msg is not None:
+                print self.msg.content
+                params = json.loads(self.msg.content)
+                print params
+                print params['bet_type']
+
+                bookie = Bookie()
+                bookie.evaluate_data()
+
+                self.send_message('Booking reveived')
 
         def stop_agent(self):
             print "Agent organizator se gasi..."
