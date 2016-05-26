@@ -47,13 +47,15 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
-*.log
-
 # Sphinx documentation
 docs/_build/
 
 # PyBuilder
 target/
 .idea
-.idea
+
+#Spade
+roomdb.xml
+spade.xml
+user_db.xml
+xmppd.xml

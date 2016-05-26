@@ -18,18 +18,17 @@ class ClientAgent(Agent):
         def _process(self):
             print "Setting booking settings"
             self.msg = self._receive(True)
-            self.show_dialog()
 
             if self.msg:
-                print self.msg.content
-                print "I got message from master agent"
+                print "\nI got message from master agent" + self.msg.content
 
             else:
+                self.show_dialog()
                 self.send_preferences("Waited")
 
         def show_dialog(self):
 
-            self.dialog_selection = raw_input("\n1)Make a bet\n2)Exit\n\nSelect:")
+            self.dialog_selection = raw_input("\n1) Make a bet\n2) Exit\n\nSelect:")
             if self.dialog_selection == '1':
                 self.set_bet_preferences()
 
@@ -43,9 +42,14 @@ class ClientAgent(Agent):
             sys.exit()
 
         def set_bet_preferences(self):
-            number_of_teams = raw_input("\nNumber of teams:")
-            bet_type = raw_input("\nType of the bet (1 - Risky, 2 - Mixed, 3 - Sure stuff):")
-            preferences = {'number_of_teams': number_of_teams , 'bet_type': bet_type}
+
+            preferences = None
+            number_of_teams = 0
+
+            while number_of_teams == 0:
+                number_of_teams = raw_input("\nNumber of teams:")
+                bet_type = raw_input("\nType of the bet (1 - Risky, 2 - Mixed, 3 - Sure stuff):")
+                preferences = {'number_of_teams': number_of_teams, 'bet_type': bet_type}
 
             self.send_preferences(json.dumps(preferences))
 
@@ -61,7 +65,7 @@ class ClientAgent(Agent):
             self.msg.setContent(preferences)
             self.myAgent.send(self.msg)
 
-            print "\nBet preferences sent \n!"
+            print "\nBet preferences sent!"
 
     def _setup(self):
         print "\n Agent\t" + self.getAID().getName() + " is up and running "
@@ -74,6 +78,7 @@ class ClientAgent(Agent):
         self.addBehaviour(settings, mt)
 
         settings.show_dialog()
+
 
 if __name__ == '__main__':
     p = ClientAgent('client@127.0.0.1', 'booking')

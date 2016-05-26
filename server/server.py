@@ -32,8 +32,7 @@ class MasterBettingAgent(Agent):
                 self.send_message('Booking reveived')
 
         def stop_agent(self):
-            print "Agent organizator se gasi..."
-            self.send_message("stop")
+            print "Agent is dying..."
             self.kill()
             sys.exit()
 
@@ -51,7 +50,7 @@ class MasterBettingAgent(Agent):
             self.msg.setContent(message)
 
             self.myAgent.send(self.msg)
-            print "\nposlao sam poruku agentu klijentu " + client + " !"
+            print "\nBet evaluation sent to:" + client + " !"
 
     def _setup(self):
         print 'Main booking agent is alive'
