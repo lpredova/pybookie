@@ -2,8 +2,8 @@
 
 Python booking client based on multiagent systems.
 
-Consists of client GUI in **Angular JS** and **Python** Backend
-
+Currently working with football WC 2014 dataset from :
+[https://github.com/openfootball/world-cup](https://github.com/openfootball/world-cup)
 
 ###Configuration instructions
 Required libs:
@@ -14,12 +14,27 @@ Required libs:
 
 ###Installation instructions
 
+    ~ configure.py localhost
+    
+    ~ runspade.py
+    
+#### Run these cmds in parallel    
+    
+    ~ python client.py
+    
+    ~ python server.py
 
-###Operating instructions
-###Manifest
+
 ###Copyright and licensing information
-###Contact information for the distributor or programmer
+Apache licence
+
 ###Known bugs
-###Troubleshooting
+- TBD
+ 
 ###Credits and acknowledgements
+
+LP 2016
+
 ###Changelog
+
+v 0.1 - 10.6.2016
