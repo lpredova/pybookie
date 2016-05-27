@@ -8,31 +8,34 @@ from spade.ACLMessage import ACLMessage
 from spade.Agent import Agent
 from spade.Behaviour import ACLTemplate, MessageTemplate
 
+from print_formatter import PrintFormatter
+
 
 class ClientAgent(Agent):
     class BookingSettings(spade.Behaviour.OneShotBehaviour):
 
         dialog_selection = None
         msg = None
+        games = None
 
         def _process(self):
-            print "Setting booking settings"
             self.msg = self._receive(True)
 
             if self.msg:
-                print "\nI got message from master agent" + self.msg.content
-
-            else:
-                self.show_dialog()
-                self.send_preferences("Waited")
+                request = json.loads(self.msg.content)
+                if request['request_type'] == 'games':
+                    self.games = request['data']
+                    self.show_dialog()
 
         def show_dialog(self):
-
-            self.dialog_selection = raw_input("\n1) Make a bet\n2) Exit\n\nSelect:")
+            self.dialog_selection = raw_input("\n1) Make a Free bet\n2) Generate bet\n3) Exit\n\nSelect:")
             if self.dialog_selection == '1':
-                self.set_bet_preferences()
+                self.set_free_bet_preferences()
 
             if self.dialog_selection == '2':
+                self.set_bet_preferences()
+
+            if self.dialog_selection == '3':
                 print "Chosen option 2"
                 self.stop_agent()
 
@@ -42,6 +45,8 @@ class ClientAgent(Agent):
             sys.exit()
 
         def set_bet_preferences(self):
+            if self.games:
+                PrintFormatter.games(self.games)
 
             preferences = None
             number_of_teams = 0
@@ -49,23 +54,36 @@ class ClientAgent(Agent):
             while number_of_teams == 0:
                 number_of_teams = raw_input("\nNumber of teams:")
                 bet_type = raw_input("\nType of the bet (1 - Risky, 2 - Mixed, 3 - Sure stuff):")
-                preferences = {'number_of_teams': number_of_teams, 'bet_type': bet_type}
+                preferences = {'request_type': 'bet', 'number_of_teams': number_of_teams, 'bet_type': bet_type}
 
-            self.send_preferences(json.dumps(preferences))
+            self.send_message(json.dumps(preferences))
 
-        def send_preferences(self, preferences):
+        def set_free_bet_preferences(self):
+            if self.games:
+                PrintFormatter.games(self.games)
 
+            teams = []
+            number_of_teams = raw_input("\nNumber of teams:")
+
+            while number_of_teams == 0:
+                team_a = raw_input("\nTeam A id")
+                team_b = raw_input("\nTeam B id")
+                teams.append({team_a, team_b})
+
+            preferences = {'request_type': 'bet', 'number_of_teams': number_of_teams, 'bet_type': teams}
+
+            self.send_message(json.dumps(preferences))
+
+        def send_message(self, content):
             master_agent = spade.AID.aid(name="bookie@127.0.0.1", addresses=["xmpp://bookie@127.0.0.1"])
-
             self.msg = ACLMessage()
             self.msg.setPerformative("inform")
             self.msg.setOntology("booking")
             self.msg.setLanguage("eng")
             self.msg.addReceiver(master_agent)
-            self.msg.setContent(preferences)
+            self.msg.setContent(content)
             self.myAgent.send(self.msg)
-
-            print "\nBet preferences sent!"
+            print 'Msg sent to master agent ' + content
 
     def _setup(self):
         print "\n Agent\t" + self.getAID().getName() + " is up and running "
@@ -77,7 +95,7 @@ class ClientAgent(Agent):
         settings = self.BookingSettings()
         self.addBehaviour(settings, mt)
 
-        settings.show_dialog()
+        settings.send_message(json.dumps({'request_type': 'games'}))
 
 
 if __name__ == '__main__':

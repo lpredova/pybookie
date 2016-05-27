@@ -1,0 +1,74 @@
+[
+  {
+    "group": "A",
+    "teams": {
+      "team1": "Brazil",
+      "team2": "Croatia",
+      "team3": "Mexico",
+      "team4": "Cameroon"
+    }
+  },
+  {
+    "group": "B",
+    "teams": {
+      "team1": "Spain",
+      "team2": "Netherlands",
+      "team3": "Chile",
+      "team4": "Australia"
+    }
+  },
+  {
+    "group": "C",
+    "teams": {
+      "team1": "Colombia",
+      "team2": "Greece",
+      "team3": "Côte d'Ivoire",
+      "team4": "Japan"
+    }
+  },
+  {
+    "group": "D",
+    "teams": {
+      "team1": "Uruguay",
+      "team2": "Costa Rica",
+      "team3": "England",
+      "team4": "Italy"
+    }
+  },
+  {
+    "group": "E",
+    "teams": {
+      "team1": "Switzerland",
+      "team2": "Ecuador",
+      "team3": "France",
+      "team4": "Honduras"
+    }
+  },
+  {
+    "group": "F",
+    "teams": {
+      "team1": "Argentina",
+      "team2": "Bosnia-Herzegovina",
+      "team3": "Iran",
+      "team4": "Nigeria"
+    }
+  },
+  {
+    "group": "G",
+    "teams": {
+      "team1": "Germany",
+      "team2": "Portugal",
+      "team3": "Ghana",
+      "team4": "United States"
+    }
+  },
+  {
+    "group": "H",
+    "teams": {
+      "team1": "Belgium",
+      "team2": "Algeria",
+      "team3": "Russia",
+      "team4": "South Korea"
+    }
+  }
+]

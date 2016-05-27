@@ -5,10 +5,12 @@ import sys
 
 import spade
 from spade.ACLMessage import ACLMessage
-from spade.Agent import Agent
+from spade.Agent import Agent, os
 from spade.Behaviour import ACLTemplate, Behaviour
 
 from bookie import Bookie
+
+os.path.dirname(os.path.realpath(__file__))
 
 
 class MasterBettingAgent(Agent):
@@ -16,20 +18,28 @@ class MasterBettingAgent(Agent):
         msg = None
 
         def _process(self):
-            print "Master betting agent up and running"
-
             self.msg = self._receive(True)
 
-            if self.msg is not None:
-                print self.msg.content
+            if self.msg:
+                request = json.loads(self.msg.content)
+
+                if request['request_type'] == 'games':
+                    bookie = Bookie()
+                    self.send_message(json.dumps({'request_type': 'games', 'data': bookie.get_games()}))
+                else:
+                    print request['request_type']
+
+            else:
+                print 'random'
+
+            if json.loads(self.msg.content)['request_type'] == 'bet':
                 params = json.loads(self.msg.content)
-                print params
                 print params['bet_type']
 
                 bookie = Bookie()
                 bookie.evaluate_data()
 
-                self.send_message('Booking reveived')
+                self.send_message('Booking results')
 
         def stop_agent(self):
             print "Agent is dying..."
@@ -53,7 +63,7 @@ class MasterBettingAgent(Agent):
             print "\nBet evaluation sent to:" + client + " !"
 
     def _setup(self):
-        print 'Main booking agent is alive'
+        print 'Main booking agent is running...'
 
         template = ACLTemplate()
         template.setOntology('booking')
