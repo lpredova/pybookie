@@ -63,16 +63,17 @@ class ClientAgent(Agent):
                 PrintFormatter.games(self.games)
 
             teams = []
-            number_of_teams = raw_input("\nNumber of teams:")
+            number_of_teams = input("\nNumber of gamse:")
 
-            while number_of_teams == 0:
-                team_a = raw_input("\nTeam A id")
-                team_b = raw_input("\nTeam B id")
-                teams.append({team_a, team_b})
+            for i in range(0, int(number_of_teams)):
+                print "GAME %d. \n" % (i + 1)
+                team_a = raw_input("\nTeam A id: ")
+                team_b = raw_input("\nTeam B id: ")
 
-            preferences = {'request_type': 'bet', 'number_of_teams': number_of_teams, 'bet_type': teams}
+                teams.append({'teamA': team_a, 'teamB': team_b})
 
-            self.send_message(json.dumps(preferences))
+            result = json.dumps({'request_type': 'team_selection', 'teams': teams})
+            self.send_message(result)
 
         def send_message(self, content):
             master_agent = spade.AID.aid(name="bookie@127.0.0.1", addresses=["xmpp://bookie@127.0.0.1"])

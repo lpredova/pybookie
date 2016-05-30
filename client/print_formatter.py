@@ -12,7 +12,5 @@ class PrintFormatter:
         for group in games:
             print '\n----------------------------------'
             print '\nGroup:' + group['group']
-            print '\t1. ' + group['teams']['team1'] + '\n'
-            print '\t2. ' + group['teams']['team2'] + '\n'
-            print '\t3. ' + group['teams']['team3'] + '\n'
-            print '\t4. ' + group['teams']['team4'] + ''
+            for team in group['teams']:
+                print "%d. %s\n" % (team['id'], team['team'])

@@ -26,6 +26,12 @@ class MasterBettingAgent(Agent):
                 if request['request_type'] == 'games':
                     bookie = Bookie()
                     self.send_message(json.dumps({'request_type': 'games', 'data': bookie.get_games()}))
+
+                if request['request_type'] == 'team_selection':
+                    bookie = Bookie()
+                    self.send_message(json.dumps(
+                        {'request_type': 'game_evaluation', 'data': bookie.make_evaluation(request['teams'])}))
+
                 else:
                     print request['request_type']
 

@@ -1,74 +1,170 @@
 [
   {
     "group": "A",
-    "teams": {
-      "team1": "Brazil",
-      "team2": "Croatia",
-      "team3": "Mexico",
-      "team4": "Cameroon"
-    }
+    "teams": [
+      {
+        "id": 1,
+        "team": "Brazil"
+      },
+      {
+        "id": 2,
+        "team": "Croatia"
+      },
+      {
+        "id": 3,
+        "team": "Mexico"
+      },
+      {
+        "id": 4,
+        "team": "Cameroon"
+      }
+    ]
   },
   {
     "group": "B",
-    "teams": {
-      "team1": "Spain",
-      "team2": "Netherlands",
-      "team3": "Chile",
-      "team4": "Australia"
-    }
+    "teams": [
+      {
+        "id": 5,
+        "team": "Spain"
+      },
+      {
+        "id": 6,
+        "team": "Netherlands"
+      },
+      {
+        "id": 7,
+        "team": "Chile"
+      },
+      {
+        "id": 8,
+        "team": "Australia"
+      }
+    ]
   },
   {
     "group": "C",
-    "teams": {
-      "team1": "Colombia",
-      "team2": "Greece",
-      "team3": "Côte d'Ivoire",
-      "team4": "Japan"
-    }
+    "teams": [
+      {
+        "id": 9,
+        "team": "Colombia"
+      },
+      {
+        "id": 10,
+        "team": "Greece"
+      },
+      {
+        "id": 11,
+        "team": "Côte d'Ivoire"
+      },
+      {
+        "id": 12,
+        "team": "Japan"
+      }
+    ]
   },
   {
     "group": "D",
-    "teams": {
-      "team1": "Uruguay",
-      "team2": "Costa Rica",
-      "team3": "England",
-      "team4": "Italy"
-    }
+    "teams": [
+      {
+        "id": 13,
+        "team": "Uruguay"
+      },
+      {
+        "id": 14,
+        "team": "Costa Rica"
+      },
+      {
+        "id": 15,
+        "team": "England"
+      },
+      {
+        "id": 16,
+        "team": "Italy"
+      }
+    ]
   },
   {
     "group": "E",
-    "teams": {
-      "team1": "Switzerland",
-      "team2": "Ecuador",
-      "team3": "France",
-      "team4": "Honduras"
-    }
+    "teams": [
+      {
+        "id": 17,
+        "team": "Switzerland"
+      },
+      {
+        "id": 18,
+        "team": "Ecuador"
+      },
+      {
+        "id": 19,
+        "team": "France"
+      },
+      {
+        "id": 20,
+        "team": "Honduras"
+      }
+    ]
   },
   {
     "group": "F",
-    "teams": {
-      "team1": "Argentina",
-      "team2": "Bosnia-Herzegovina",
-      "team3": "Iran",
-      "team4": "Nigeria"
-    }
+    "teams": [
+      {
+        "id": 21,
+        "team": "Argentina"
+      },
+      {
+        "id": 22,
+        "team": "Bosnia-Herzegovina"
+      },
+      {
+        "id": 23,
+        "team": "Iran"
+      },
+      {
+        "id": 24,
+        "team": "Nigeria"
+      }
+    ]
   },
   {
     "group": "G",
-    "teams": {
-      "team1": "Germany",
-      "team2": "Portugal",
-      "team3": "Ghana",
-      "team4": "United States"
-    }
+    "teams": [
+      {
+        "id": 25,
+        "team": "Germany"
+      },
+      {
+        "id": 26,
+        "team": "Portugal"
+      },
+      {
+        "id": 27,
+        "team": "Ghana"
+      },
+      {
+        "id": 28,
+        "team": "United States"
+      }
+    ]
   },
   {
     "group": "H",
-    "teams": {
-      "team1": "Belgium",
-      "team2": "Algeria",
-      "team3": "Russia",
-      "team4": "South Korea"
-    }
+    "teams": [
+      {
+        "id": 29,
+        "team": "Belgium"
+      },
+      {
+        "id": 30,
+        "team": "Algeria"
+      },
+      {
+        "id": 31,
+        "team": "Russia"
+      },
+      {
+        "id": 32,
+        "team": "South Korea"
+      }
+    ]
   }
 ]
