@@ -63,7 +63,7 @@ class ClientAgent(Agent):
                 PrintFormatter.games(self.games)
 
             teams = []
-            number_of_teams = input("\nNumber of gamse:")
+            number_of_teams = input("\nNumber of games:")
 
             for i in range(0, int(number_of_teams)):
                 print "GAME %d. \n" % (i + 1)
