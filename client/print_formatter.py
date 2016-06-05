@@ -10,12 +10,13 @@ class PrintFormatter:
         games = json.loads(games)
 
         for group in games:
-            print '\n----------------------------------'
             print '\nGroup:' + group['group']
             for team in group['teams']:
-                print "%d. %s\n" % (team['id'], team['team'])
+                print "%d. %s" % (team['id'], team['team'])
+            print '----------------------------------'
 
     @staticmethod
     def results(results):
+        print '\nBetting suggestions\n'
         for game in results:
             print '%s \n' % game['result']
