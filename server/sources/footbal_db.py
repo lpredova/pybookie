@@ -1,9 +1,10 @@
+# coding=utf-8
+
 import json
 import os
 
 '''
 TODO
-get top 10 club players
 get scorers
 get last 10 games
 '''
@@ -12,14 +13,14 @@ get last 10 games
 class FootballDB:
     groups_file = '/Users/lovro/Coding/Python/pybookie/server/sources/groups.json'
     wc_history_file = '/Users/lovro/Coding/Python/pybookie/server/sources/wc_history'
+    wc_team_file = '/Users/lovro/Coding/Python/pybookie/server/sources/squads/'
+
+    top_teams = ['RealMadrid(ESP)', 'Barcelona(ESP)', 'Chelsea(ENG)', 'ManchesterCity(ENG)', 'ParisSaint-Germain(FRA)',
+                 'BayernMunich(GER)', 'Internazionale(ITA)', 'ManchesterUnited(ENG)', 'Arsenal(ENG)', 'Liverpool(ENG)',
+                 'Juventus(ITA)', 'BorussiaDortmund(GER)', 'AtléticoMadrid(ESP)']
 
     def __init__(self):
         pass
-
-    @staticmethod
-    def evaluate():
-        # https://github.com/openfootball/world-cup
-        print "evaluating football db"
 
     @staticmethod
     def get_team_by_id(team_id):
@@ -72,11 +73,14 @@ class FootballDB:
     @staticmethod
     def get_wc_titles(team_name):
         titles = FootballDB.get_wc_history(team_name, 9)
-
-        if titles != 0:
-            titles = titles[0]
-
-        return int(titles)
+        try:
+            if titles.isalpha() and int(titles) != 0:
+                titles = titles[0]
+                return int(titles)
+            else:
+                return 0
+        except Exception:
+            return 0
 
     @staticmethod
     def get_wc_history(team, result_row_index):
@@ -89,7 +93,6 @@ class FootballDB:
                     row = line.replace('\n', '')
                     row = row.replace(' ', '')
                     row = row.split('|')
-
                     if row[1] == team.replace(' ', ''):
                         f.close()
                         try:
@@ -98,10 +101,33 @@ class FootballDB:
                             return 0
 
     @staticmethod
+    def get_wc_team_player_ratings(team):
+        path = '%s%s.txt' % (FootballDB.wc_team_file, (team.replace(' ', '-')))
+        path = path.lower()
+        team_rating = 0
+        if os.path.isfile(path):
+            f = open(path)
+
+            for line in f:
+                try:
+                    row = line.split('##')
+                    row = row[1].replace(' ', '').split(',')
+
+                    team_rating += int(row[0])
+                    team_name = row[1].replace('\n', '')
+
+                    if team_name in FootballDB.top_teams:
+                        team_rating += 10
+
+                except Exception:
+                    pass
+        else:
+            print team
+
+        return team_rating
+
+    @staticmethod
     def get_games():
-        """
-        :rtype: object
-        """
         data = None
         path = FootballDB.groups_file
         if os.path.isfile(path):

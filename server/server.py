@@ -22,30 +22,22 @@ class MasterBettingAgent(Agent):
 
             if self.msg:
                 request = json.loads(self.msg.content)
-
                 if request['request_type'] == 'games':
                     bookie = Bookie()
                     self.send_message(json.dumps({'request_type': 'games', 'data': bookie.get_games()}))
 
+                if request['request_type'] == 'bet':
+                    bookie = Bookie()
+                    data = bookie.make_random_evaluation(request['number_of_teams'])
+                    self.send_message(json.dumps({'request_type': 'game_evaluation', 'data': data}))
+
                 if request['request_type'] == 'team_selection':
                     bookie = Bookie()
-                    self.send_message(json.dumps(
-                        {'request_type': 'game_evaluation', 'data': bookie.make_evaluation(request['teams'])}))
+                    data = bookie.make_evaluation(request['teams'])
+                    self.send_message(json.dumps({'request_type': 'game_evaluation', 'data': data}))
 
                 else:
-                    print request['request_type']
-
-            else:
-                print 'random'
-
-            if json.loads(self.msg.content)['request_type'] == 'bet':
-                params = json.loads(self.msg.content)
-                print params['bet_type']
-
-                bookie = Bookie()
-                bookie.evaluate_data()
-
-                self.send_message('Booking results')
+                    pass
 
         def stop_agent(self):
             print "Agent is dying..."
@@ -53,9 +45,9 @@ class MasterBettingAgent(Agent):
             sys.exit()
 
         def send_message(self, message):
+
             client = "client@127.0.0.1"
             address = "xmpp://" + client
-
             receiver = spade.AID.aid(name=client, addresses=[address])
 
             self.msg = ACLMessage()
@@ -66,10 +58,10 @@ class MasterBettingAgent(Agent):
             self.msg.setContent(message)
 
             self.myAgent.send(self.msg)
-            print "\nBet evaluation sent to:" + client + " !"
+            print "\nMessage sent to: %s !" % client
 
     def _setup(self):
-        print 'Main booking agent is running...'
+        print "\n Agent\t" + self.getAID().getName() + " is up"
 
         template = ACLTemplate()
         template.setOntology('booking')

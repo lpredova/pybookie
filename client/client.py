@@ -6,13 +6,13 @@ import sys
 import spade
 from spade.ACLMessage import ACLMessage
 from spade.Agent import Agent
-from spade.Behaviour import ACLTemplate, MessageTemplate
+from spade.Behaviour import ACLTemplate, MessageTemplate, Behaviour
 
 from print_formatter import PrintFormatter
 
 
 class ClientAgent(Agent):
-    class BookingSettings(spade.Behaviour.OneShotBehaviour):
+    class BookingSettings(Behaviour):
 
         dialog_selection = None
         msg = None
@@ -20,11 +20,13 @@ class ClientAgent(Agent):
 
         def _process(self):
             self.msg = self._receive(True)
-
             if self.msg:
                 request = json.loads(self.msg.content)
                 if request['request_type'] == 'games':
                     self.games = request['data']
+                    self.show_dialog()
+                if request['request_type'] == 'game_evaluation':
+                    PrintFormatter.results(request['data'])
                     self.show_dialog()
 
         def show_dialog(self):
@@ -36,7 +38,6 @@ class ClientAgent(Agent):
                 self.set_bet_preferences()
 
             if self.dialog_selection == '3':
-                print "Chosen option 2"
                 self.stop_agent()
 
         def stop_agent(self):
@@ -45,16 +46,12 @@ class ClientAgent(Agent):
             sys.exit()
 
         def set_bet_preferences(self):
-            if self.games:
-                PrintFormatter.games(self.games)
-
             preferences = None
             number_of_teams = 0
 
-            while number_of_teams == 0:
-                number_of_teams = raw_input("\nNumber of teams:")
-                bet_type = raw_input("\nType of the bet (1 - Risky, 2 - Mixed, 3 - Sure stuff):")
-                preferences = {'request_type': 'bet', 'number_of_teams': number_of_teams, 'bet_type': bet_type}
+            while number_of_teams == 0 and number_of_teams < 16:
+                number_of_teams = raw_input('\nNumber of games:')
+                preferences = {'request_type': 'bet', 'number_of_teams': number_of_teams}
 
             self.send_message(json.dumps(preferences))
 
@@ -84,10 +81,10 @@ class ClientAgent(Agent):
             self.msg.addReceiver(master_agent)
             self.msg.setContent(content)
             self.myAgent.send(self.msg)
-            print 'Msg sent to master agent ' + content
+            print 'Message %s sent to master agent' % content
 
     def _setup(self):
-        print "\n Agent\t" + self.getAID().getName() + " is up and running "
+        print "\n Agent\t" + self.getAID().getName() + " is up"
 
         feedback_template = ACLTemplate()
         feedback_template.setOntology('booking')
