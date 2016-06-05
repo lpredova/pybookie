@@ -25,8 +25,12 @@ class Bookie:
 
             if team_a and team_b:
 
-                team_a_sum = footbal_db.FootballDB.get_wc_titles(team_a)
-                team_b_sum = footbal_db.FootballDB.get_wc_titles(team_b)
+                if team_a == team_b:
+                    results.append({'result': ('SAME TEAM %s - 50%%' % team_a)})
+                    continue
+
+                team_a_sum = footbal_db.FootballDB.get_wc_titles(team_a) * 200
+                team_b_sum = footbal_db.FootballDB.get_wc_titles(team_b) * 200
 
                 team_a_sum += footbal_db.FootballDB.get_ranking(team_b)
                 team_b_sum += footbal_db.FootballDB.get_ranking(team_a)
@@ -62,7 +66,6 @@ class Bookie:
                     float(team_b_sum) / float(total_sum) * 100)
                 results.append({'result': result})
             else:
-                print '2 %s %s' % (team_a, team_b)
                 return 'INVALID TEAM CODE'
 
         return results

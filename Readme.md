@@ -1,18 +1,22 @@
 #Pybookie
 
-Python booking client based on multiagent systems.
+Pybookie is booking client based on multiagent systems that provides analyisis of teams and reccomends betting options.
 
-Currently working with football WC 2014 dataset from :
+It consists of one master and N client agents that comunicate with each other.
+
+Master agent analyizes teams based on data from 2014 WC in Brazil:
 [https://github.com/openfootball/world-cup](https://github.com/openfootball/world-cup)
 
-###Configuration instructions
-Required libs:
 
+##Configuration instructions
+Required:
+
+	Python 2.7
 	Spade
 	Requests
 
 
-###Installation instructions
+##Installation instructions
 
     ~ configure.py localhost
     
@@ -25,16 +29,19 @@ Required libs:
     ~ python server.py
 
 
-###Copyright and licensing information
-Apache licence
-
-###Known bugs
-- TBD
+##Future work
+- implementation of last 10 games for specific team
+- get goals for currently active players
+- add wikipedia support
  
-###Credits and acknowledgements
+##Credits and acknowledgements
 
-LP 2016
+Author: [lovro_p](https://twitter.com/lovro_p)
 
 ###Changelog
 
-v 0.1 - 10.6.2016
+**v 1.0** - 5.6.2016 - Initial version made for VAS (Višeagentni sustavi - Multiagent systems - faculty of organization and informatics 2016)
+
+
+###Copyright and licensing information
+Apache licence

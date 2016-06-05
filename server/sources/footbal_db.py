@@ -3,21 +3,17 @@
 import json
 import os
 
-'''
-TODO
-get scorers
-get last 10 games
-'''
-
 
 class FootballDB:
-    groups_file = '/Users/lovro/Coding/Python/pybookie/server/sources/groups.json'
-    wc_history_file = '/Users/lovro/Coding/Python/pybookie/server/sources/wc_history'
-    wc_team_file = '/Users/lovro/Coding/Python/pybookie/server/sources/squads/'
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+    groups_file = BASE_DIR + '/sources/groups.json'
+    wc_history_file = BASE_DIR + '/sources/wc_history'
+    wc_team_file = BASE_DIR + '/sources/squads/'
 
     top_teams = ['RealMadrid(ESP)', 'Barcelona(ESP)', 'Chelsea(ENG)', 'ManchesterCity(ENG)', 'ParisSaint-Germain(FRA)',
-                 'BayernMunich(GER)', 'Internazionale(ITA)', 'ManchesterUnited(ENG)', 'Arsenal(ENG)', 'Liverpool(ENG)',
-                 'Juventus(ITA)', 'BorussiaDortmund(GER)', 'AtléticoMadrid(ESP)']
+                 'BayernMunich(GER)', 'Internazionale(ITA)', 'Napoli(ITA)', 'ManchesterUnited(ENG)', 'Arsenal(ENG)',
+                 'Liverpool(ENG)', 'Juventus(ITA)', 'BorussiaDortmund(GER)', 'AtléticoMadrid(ESP)']
 
     def __init__(self):
         pass
@@ -121,8 +117,6 @@ class FootballDB:
 
                 except Exception:
                     pass
-        else:
-            print team
 
         return team_rating
 
