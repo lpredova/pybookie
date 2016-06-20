@@ -5,7 +5,7 @@
 
 Group A  |  Ethiopia     South Africa   Botswana   Central African Republic
 Group B  |  Tunisia      Cape Verde     Sierra Leone   Equat. Guinea
-Group C  |  Côte d'Ivoire  Morocco        Tanzania    Gambia
+Group C  |  Cote d'Ivoire  Morocco        Tanzania    Gambia
 Group D  |  Ghana        Zambia         Lesotho     Sudan
 Group E  |  Burkina Faso  Congo-Brazz.  Gabon     Niger
 Group F  |  Nigeria       Malawi        Kenya     Namibia
@@ -64,20 +64,20 @@ Sep/7 2013   Tunisia       3-0 (*) Cape Verde     @ Radès      ## note: awarded
 Group C:
 
 Jun/2 2012    Gambia        1-1 Morocco        @ Bakau
-Jun/2 2012    Côte d'Ivoire 2-0 Tanzania       @ Abidjan
-Jun/9 2012    Morocco       2-2 Côte d'Ivoire  @ Marrakech
+Jun/2 2012    Cote d'Ivoire 2-0 Tanzania       @ Abidjan
+Jun/9 2012    Morocco       2-2 Cote d'Ivoire  @ Marrakech
 Jun/10 2012   Tanzania      2-1 Gambia         @ Dar es Salaam
 
-Mar/23 2013   Côte d'Ivoire 3-0 Gambia       @ Abidjan
+Mar/23 2013   Cote d'Ivoire 3-0 Gambia       @ Abidjan
 Mar/24 2013   Tanzania      3-1 Morocco      @ Dar es Salaam
 
-Jun/8 2013    Gambia        0-3 Côte d'Ivoire  @ Bakau
+Jun/8 2013    Gambia        0-3 Cote d'Ivoire  @ Bakau
 Jun/8 2013    Morocco       2-1 Tanzania       @ Marrakech
 Jun/15 2013   Morocco       2-0 Gambia         @ Marrakech
-Jun/16 2013   Tanzania      2-4 Côte d'Ivoire  @ Dar es Salaam
+Jun/16 2013   Tanzania      2-4 Cote d'Ivoire  @ Dar es Salaam
 
 Sep/7 2013    Gambia        2-0 Tanzania     @ Bakau
-Sep/7 2013    Côte d'Ivoire 1-1 Morocco      @ Abidjan
+Sep/7 2013    Cote d'Ivoire 1-1 Morocco      @ Abidjan
 
 
 Group D:

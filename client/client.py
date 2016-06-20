@@ -8,6 +8,7 @@ from spade.ACLMessage import ACLMessage
 from spade.Agent import Agent
 from spade.Behaviour import ACLTemplate, MessageTemplate, Behaviour
 
+from evaluator import Evaluator
 from print_formatter import PrintFormatter
 
 
@@ -27,6 +28,7 @@ class ClientAgent(Agent):
                     self.show_dialog()
                 if request['request_type'] == 'game_evaluation':
                     PrintFormatter.results(request['data'])
+                    Evaluator.find_result(request['data'])
                     self.show_dialog()
 
         def show_dialog(self):

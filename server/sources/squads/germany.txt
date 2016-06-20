@@ -8,7 +8,7 @@
 (15)  DF  Erik Durm                          ##   1, Borussia Dortmund (GER)
 (16)  DF  Philipp Lahm                       ## 105, Bayern Munich (GER)
 (17)  DF  Per Mertesacker                    ##  97, Arsenal (ENG)
-(20)  DF  Jérôme Boateng                     ##  38, Bayern Munich (GER)
+(20)  DF  Jérome Boateng                     ##  38, Bayern Munich (GER)
 
  (3)  MF  Matthias Ginter                    ##   2, SC Freiburg (GER)
  (6)  MF  Sami Khedira                       ##  45, Real Madrid (ESP)

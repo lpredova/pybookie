@@ -23,4 +23,4 @@
  (9)  FW  Fred                               ##  33, Fluminense (BRA)
 (10)  FW  Neymar                             ##  48, Barcelona (ESP)
 (20)  FW  Bernard                            ##  10, Shakhtar Donetsk (UKR)
-(21)  FW  Jô                                 ##  16, Atlético Mineiro (BRA)
+(21)  FW  Jo                                 ##  16, Atlético Mineiro (BRA)
