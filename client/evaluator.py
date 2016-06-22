@@ -82,7 +82,7 @@ class Evaluator:
                     team_a = game['result'].split(' ')[0]
                     team_b = game['result'].split(' ')[5]
 
-                    bet = '%s - %d' % (random.choice([team_a, team_b]), random.choice([1, 2, 3]))
+                    bet = '%s - %s' % (random.choice([team_a, team_b]), random.choice(["1", "2", "X"]))
                     bets.append(bet)
         except:
             pass
