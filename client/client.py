@@ -1,6 +1,7 @@
 # coding=utf-8
 # !/usr/bin/env python
 import json
+import random
 import sys
 
 import spade
@@ -19,6 +20,9 @@ class ClientAgent(Agent):
         msg = None
         games = None
 
+        # 1 - risky, 2 - sure thing , 3 - I don't know what I'm doing
+        mood = random.choice([1, 2, 3])
+
         def _process(self):
             self.msg = self._receive(True)
             if self.msg:
@@ -28,6 +32,8 @@ class ClientAgent(Agent):
                     self.show_dialog()
                 if request['request_type'] == 'game_evaluation':
                     PrintFormatter.results(request['data'])
+                    Evaluator.make_bet(self.mood, request['data'])
+                    print "\n********Results********\n"
                     Evaluator.find_result(request['data'])
                     self.show_dialog()
 
